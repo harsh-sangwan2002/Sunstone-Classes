@@ -13,6 +13,7 @@ Select title  "movie_name", description from film where rental_duration > 5;
 -- Show the length of movies in hours
 Select title, length/60 as watchTime from film;
 
+-- Select the movies where rating is "PG-13", "PG", or "G"
 Select * from film where rating = 'PG-13' or rating = 'PG' or rating = 'G';
 
 -- Use In operator here -> Select from a given list of items

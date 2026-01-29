@@ -5,6 +5,7 @@ sum(1)(2)() -> 3
 sum(1)(2)(3)() -> 6
 */
 
+// a->1, b->2, a->3, b->3
 function sum(a) {
 
     // base condition

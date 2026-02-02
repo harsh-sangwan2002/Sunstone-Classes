@@ -7,9 +7,9 @@ The query result format is in the following example.
 */
 Select 
     problem_id
-From 
-    Problems
+From
+    Problems 
 Where
-    likes/(likes+dislikes) < 0.6
-Order By
+    likes/likes+dislikes < 0.6
+Order By 
     problem_id;

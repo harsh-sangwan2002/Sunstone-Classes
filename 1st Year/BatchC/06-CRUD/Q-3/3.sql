@@ -7,11 +7,11 @@ Write an SQL query to find the names of customers who have not made a purchase s
 
 Return the results ordered by customer_id in ascending order.
 */
-Select 
+Select
     customer_name
 From 
-    Customers
+    Customers 
 Where
     last_purchase_date < '2023-01-01'
-Order By
+Order By 
     customer_id;

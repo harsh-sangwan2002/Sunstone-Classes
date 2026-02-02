@@ -7,12 +7,22 @@ Write an SQL query to retrieve the titles of movies released in 2000 or later th
 
 Return the result ordered by movie_id in ascending order. 
 */
-Select 
+Select
     movie_title
 From 
-    Movies 
+    Movies
 Where
-    release_year >= 2000 And
+    release_year >= 2000 and 
+    genre = "Sci-Fi" or genre = "Action"
+Order By 
+    movie_id;
+
+Select
+    movie_title
+From 
+    Movies
+Where
+    release_year >= 2000 and 
     genre In ("Sci-Fi","Action")
-Order By
+Order By 
     movie_id;

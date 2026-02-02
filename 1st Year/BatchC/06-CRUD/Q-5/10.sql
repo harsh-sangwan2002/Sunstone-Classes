@@ -7,11 +7,3 @@ Write an SQL query to retrieve the titles of movies that are not in the genres "
 
 Return the output ordered by movie_id in ascending order.
 */
-Select 
-    movie_title
-From 
-    Movies
-Where
-    genre Not In ("Romance","Drama")
-Order By
-    movie_id;

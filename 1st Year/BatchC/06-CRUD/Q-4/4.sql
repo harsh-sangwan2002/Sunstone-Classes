@@ -7,3 +7,12 @@ Write an SQL query to retrieve the order IDs of orders placed by customer 1 that
 
 Return the output ordered by order_id in ascending order.
 */
+Select
+    order_id 
+From 
+    Orders 
+Where
+    customer_id = 1 and 
+    order_status In ("Shipped","Delivered")
+Order by
+    order_id;

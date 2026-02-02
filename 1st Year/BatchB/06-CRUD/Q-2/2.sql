@@ -8,22 +8,14 @@ Note: Use the mod(column_name,number) function to find out an odd-numbered or ev
 table name -> movies
 columns -> id, description, rating
 
-Select
-    *
-From
-    movies 
-Where
-    id%2 != 0 and 
-    description != "boring"
-Order by
-    rating desc;
 
 Select
     *
-From
-    movies 
+From 
+    movies
 Where
-    mod(id,2) != 0 and 
-    description != "boring"
-Order by
-    rating desc;
+    id%2 !=0 And
+    description Not Like "%boring%"
+Order By 
+    rating desc,
+    id;

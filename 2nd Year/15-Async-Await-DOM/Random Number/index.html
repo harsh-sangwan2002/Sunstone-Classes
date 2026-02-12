@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generate Random Number</title>
+</head>
+
+<body>
+    <!-- Generate a random number whenever you click on this button -->
+    <button id="generate">Generate random number</button>
+    <p>Number is: <span id="number"></span></p>
+</body>
+
+<script>
+    let button = document.getElementById('generate');
+    let number = document.getElementById('number');
+
+    button.addEventListener('click', () => {
+        number.textContent = Math.trunc(Math.random() * 1000);
+    })
+</script>
+
+</html>

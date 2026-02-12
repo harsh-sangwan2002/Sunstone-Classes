@@ -21,10 +21,10 @@ createDummyPromise(2000, 'Promise 1 resolved after 2 seconds').then(data => {
     console.log(data);
 });
 
-createDummyPromise(5000, 'Promise 2 resolved after 3 seconds').then(data => {
+createDummyPromise(5000, 'Promise 2 resolved after 5 seconds').then(data => {
     console.log(data);
 });
 
-createDummyPromise(10000, 'Promise 3 resolved after 4 seconds').then(data => {
+createDummyPromise(10000, 'Promise 3 resolved after 10 seconds').then(data => {
     console.log(data);
 });

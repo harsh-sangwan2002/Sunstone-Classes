@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intro To DOM</title>
+    <style>
+        .randomNumberContainer {
+            margin: 2rem 0;
+            font-size: 40px;
+            color: green;
+            padding: 1rem;
+            border: 1px solid black;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 id="heading">DOM</h1>
+
+    <ul>
+        <li>Item 1</li>
+        <li>Item 2</li>
+        <li>Item 3</li>
+        <li>Item 4</li>
+    </ul>
+
+    <a href="https://www.google.com">Go to google</a>
+
+    <div class="container">
+        <div class="parent">
+            <ul>
+                <li>Child 1</li>
+                <li>Child 2</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="parent">
+        Hello
+        <p>Some details here</p>
+        <a href="https://www.google.com">Go to google</a>
+    </div>
+
+    <div class="randomNumberContainer">
+        0
+    </div>
+
+    <button id="randomNumber">Generate random number</button>
+
+    <script>
+        let numberContainer = document.getElementsByClassName('randomNumberContainer')[0];
+        // console.log(numberContainer);
+        // console.log(numberContainer.textContent);
+        numberContainer.textContent = 1;
+
+        // Create a alert with a random number on clicking the button
+        let buttonRef = document.querySelector('#randomNumber');
+
+        let parentRef = document.querySelector('.container .parent');
+        console.log(parentRef);
+
+        buttonRef.addEventListener('click', function () {
+            alert(Math.floor(Math.random() * 10));
+        })
+
+        document.addEventListener('click', function () {
+            alert(Math.floor(Math.random() * 10));
+        })
+    </script>
+</body>
+
+</html>

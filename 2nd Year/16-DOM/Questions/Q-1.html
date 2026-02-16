@@ -34,12 +34,13 @@
     let ul = document.querySelector('ul');
 
     list.forEach((currNode, idx) => {
-        console.log(idx, ele);
         const newLINode = document.createElement('li');
         newLINode.textContent = 7;
 
-        if (idx == 6)
+        if (idx == 6) {
+            console.log(currNode);
             ul.insertBefore(newLINode, currNode);
+        }
     })
 </script>
 

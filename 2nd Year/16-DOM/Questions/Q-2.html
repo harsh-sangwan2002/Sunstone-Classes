@@ -10,7 +10,7 @@
 <body>
     <div>
         <span class="var1">5</span>
-        <span class="operator">x</span>
+        <span class="operator">/</span>
         <span class="var2">10</span>
         <span>=</span>
         <span class="result"></span>
@@ -19,6 +19,39 @@
     <button>Calculate</button>
 
     <script>
-        
+        const val1 = Number(document.querySelector('.var1').textContent);
+        const val2 = Number(document.querySelector('.var2').textContent);
+        const opeartor = document.querySelector('.operator').textContent;
+
+
+        let res;
+        const result = document.querySelector('.result');
+        const buttonRef = document.querySelector('button');
+
+        switch (opeartor) {
+            case "+":
+                res = val1 + val2;
+                break;
+
+            case "-":
+                res = val1 - val2;
+                break;
+
+            case "*":
+                res = val1 * val2;
+                break;
+
+            case "/":
+                res = val1 / val2;
+                break;
+
+            default:
+                res = "Opeartion not allowed"
+                break;
+        }
+
+        buttonRef.addEventListener('click', e => {
+            result.textContent = res;
+        })
     </script>
 </body>

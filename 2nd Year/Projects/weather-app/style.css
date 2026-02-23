@@ -1,0 +1,139 @@
+/* Reset and Base Styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Poppins", Arial, Helvetica, sans-serif;
+    background: linear-gradient(135deg, #01161e, #022b3a);
+    color: #fff;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    justify-content: start;
+    align-items: center;
+    overflow: hidden;
+}
+
+/* Header Styling */
+.header {
+    text-align: center;
+    padding: 2rem;
+    margin-top: 2rem;
+}
+
+.header h1 {
+    font-size: 4rem;
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Container Styling */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    min-height: 50vh;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    padding: 2rem;
+    animation: fadeIn 1s ease-in-out;
+}
+
+.container .weather {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 2rem;
+}
+
+.container .weather section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1rem;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 15px;
+    padding: 1.5rem;
+    transition: transform 0.3s ease, background 0.3s ease;
+    min-width: 12rem;
+}
+
+.container .weather section:hover {
+    cursor: pointer;
+    transform: translateY(-8px);
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.container .weather p {
+    font-size: 2.5rem;
+    text-wrap: wrap;
+    color: #fff;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+/* Search Field */
+form {
+    height: 100px;
+    padding: 1rem 0;
+    position: absolute;
+    bottom: 0;
+    width: 100vw;
+    backdrop-filter: blur(6px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: slideUp 1.2s ease;
+}
+
+form {
+    width: 70%;
+    display: grid;
+    grid-template-columns: 5fr 1fr;
+    gap: 1rem;
+}
+
+.search-field {
+    padding: 0.8rem;
+    font-size: 1.1rem;
+    color: #fff;
+    border: none;
+    outline: none;
+    background: transparent;
+    border-bottom: 2px solid #4ecdc4;
+    transition: border-color 0.3s ease;
+    width: 100%;
+}
+
+.search-field:focus {
+    border-color: #fff;
+}
+
+button {
+    background: linear-gradient(135deg, #4ecdc4, #2ec4b6);
+    font-size: 1rem;
+    padding: 0.8rem;
+    color: white;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(78, 205, 196, 0.5);
+}

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counter App</title>
+    <style>
+        .container,
+        .quantity,
+        .row {
+            display: flex;
+            gap: 10px;
+        }
+
+        .container {
+            flex-direction: column;
+        }
+
+        .row,
+        .container {
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Counter</h1>
+    <div class="container">
+        <div class="row">
+            <div class="title">Apple</div>
+            <div class="quantity">
+                <button class="btn-minus">-</button>
+                <span class="count">0</span>
+                <button class="btn-plus">+</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="title">Banana</div>
+            <div class="quantity">
+                <button class="btn-minus">-</button>
+                <span class="count">0</span>
+                <button class="btn-plus">+</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="title">Orange</div>
+            <div class="quantity">
+                <button class="btn-minus">-</button>
+                <span class="count">0</span>
+                <button class="btn-plus">+</button>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script>
+    const container = document.querySelector('.container');
+
+    /* This is called as event delegation where we don't apply event listener on every element
+    but it is applied on the parent element
+    */
+    container.addEventListener('click', e => {
+        const element = e.target;
+        const quantityRef = element.closest('.quantity');
+
+        if (element.classList.contains('btn-minus')) {
+            const countRef = quantityRef.querySelector('.count');
+            let currValue = parseInt(countRef.innerText);
+
+            if (currValue > 0)
+                currValue--;
+
+            countRef.innerText = currValue;
+        }
+
+        else if (element.classList.contains('btn-plus')) {
+            const countRef = quantityRef.querySelector('.count');
+            let currValue = parseInt(countRef.innerText);
+            currValue++;
+            countRef.innerText = currValue;
+        }
+    })
+</script>
+
+</html>

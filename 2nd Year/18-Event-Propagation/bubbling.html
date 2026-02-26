@@ -45,6 +45,8 @@
     <script>
 
         document.querySelector('.box-3').addEventListener('click', e => {
+            console.log(e);
+            e.stopPropagation();
             console.log("Box-3 clicked");
         }, false)
 

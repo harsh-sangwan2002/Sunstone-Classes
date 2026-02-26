@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Bubbling</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .box-1 {
+            height: 600px;
+            width: 400px;
+            background-color: red;
+        }
+
+        .box-2 {
+            height: 500px;
+            width: 300px;
+            background-color: blue;
+        }
+
+        .box-3 {
+            height: 300px;
+            width: 200px;
+            background-color: yellow;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="box box-1">
+            <div class="box box-2">
+                <div class="box box-3"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+        document.querySelector('.box-3').addEventListener('click', e => {
+            console.log("Box-3 clicked");
+        }, false)
+
+        document.querySelector('.box-1').addEventListener('click', e => {
+            console.log("Box-1 clicked");
+        }, false)
+
+        document.querySelector('.box-2').addEventListener('click', e => {
+            console.log("Box-2 clicked");
+        }, false)
+    </script>
+</body>
+
+</html>

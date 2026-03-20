@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comment Box</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .container {
+            border: 1px solid black;
+            padding: 1rem;
+            margin: 5rem;
+        }
+
+        .comment {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            position: relative;
+            border-left: 1px solid #000;
+            padding-left: 0.7rem;
+        }
+
+        .reply {
+            width: 3rem;
+        }
+
+        textarea {
+            width: 90%;
+        }
+
+        .hide {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+    </div>
+</body>
+
+<script>
+    let comments = [
+        {
+            id: 1,
+            title: "Hi, how are you doing?",
+            replies: [
+                {
+                    id: 2,
+                    title: "I'm good, thanks! How about you?",
+                    replies: [
+                        {
+                            id: 3,
+                            title: "Doing well, just busy with work.",
+                            replies: []
+                        }
+                    ]
+                },
+                {
+                    id: 4,
+                    title: "Hey! Long time no see.",
+                    replies: []
+                }
+            ]
+        },
+        {
+            id: 5,
+            title: "Hello everyone!",
+            replies: []
+        }
+    ];
+    const containerRef = document.querySelector('.container');
+
+    const createCommentCard = (id, title, parentRef) => {
+
+        const commentRef = document.createElement('div');
+        commentRef.classList.add('comment');
+        commentRef.setAttribute('id', id);
+
+        commentRef.innerHTML = `
+        <div class="title">${id}. ${title}</div>
+        <button class="reply">Reply</button>
+        <div class="new hide">
+            <textarea placeholder="Enter your comment..."></textarea>
+            <button class="send">Send</button>
+        </div>
+        `;
+
+        const replyButtonRef = commentRef.querySelector('.reply');
+        const replyRef = commentRef.querySelector('.new');
+        const textareaRef = commentRef.querySelector('textarea');
+
+        replyButtonRef.addEventListener('click', e => {
+            replyRef.classList.toggle('hide');
+        })
+
+        textareaRef.addEventListener('input', e => {
+            console.log(e.target.value);
+        })
+
+        parentRef.appendChild(commentRef);
+        return commentRef;
+    }
+
+    const renderComments = (comments, parentRef) => {
+
+        comments.forEach(comment => {
+            const commentRef = createCommentCard(comment.id, comment.title, parentRef);
+
+            if (comment.replies)
+                renderComments(comment.replies, commentRef);
+        })
+    }
+
+    const loadComments = () => {
+        containerRef.innerHTML = '';
+        renderComments(comments, containerRef);
+    }
+
+    loadComments();
+</script>
+
+</html>

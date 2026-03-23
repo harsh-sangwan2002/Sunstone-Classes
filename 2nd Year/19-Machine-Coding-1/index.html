@@ -48,7 +48,7 @@
 </body>
 
 <script>
-    let comments = [
+    let comments = JSON.parse(localStorage.getItem('comments')) || [
         {
             id: 1,
             title: "Hi, how are you doing?",
@@ -77,7 +77,16 @@
             replies: []
         }
     ];
+
     const containerRef = document.querySelector('.container');
+
+    const saveToLocalStorage = (comments) => {
+        localStorage.setItem('comments', JSON.stringify(comments));
+    }
+
+    const removeFromLocalStorage = () => {
+        localStorage.removeItem('comments');
+    }
 
     const createCommentCard = (id, title, parentRef) => {
 
@@ -97,17 +106,59 @@
         const replyButtonRef = commentRef.querySelector('.reply');
         const replyRef = commentRef.querySelector('.new');
         const textareaRef = commentRef.querySelector('textarea');
+        const sendButtonRef = commentRef.querySelector('.send');
+
+        let content = '';
 
         replyButtonRef.addEventListener('click', e => {
             replyRef.classList.toggle('hide');
         })
 
         textareaRef.addEventListener('input', e => {
-            console.log(e.target.value);
+            content = e.target.value;
+        })
+
+        sendButtonRef.addEventListener('click', e => {
+            updateComments(content, commentRef);
         })
 
         parentRef.appendChild(commentRef);
         return commentRef;
+    }
+
+    const updateComments = (content, commentRef) => {
+
+        const replyId = Math.trunc(Math.random() * 1000);
+        const replyTitle = content;
+
+        const newComment = {
+            id: replyId,
+            title: replyTitle,
+            replies: [
+
+            ]
+        }
+
+        const id = commentRef.getAttribute('id');
+        console.log(comments);
+        findComment(comments, newComment, id);
+        saveToLocalStorage(comments);
+        loadComments();
+    }
+
+    const findComment = (comments, reply, id) => {
+
+        console.log(comments);
+        comments.forEach(comment => {
+
+            if (comment.id == id) {
+                comment.replies.unshift(reply);
+                return;
+            }
+
+            else
+                findComment(comment.replies, reply, id);
+        })
     }
 
     const renderComments = (comments, parentRef) => {

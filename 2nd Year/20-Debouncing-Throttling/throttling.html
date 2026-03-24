@@ -27,13 +27,45 @@
 </body>
 
 <script>
+    /* Throttling -> Ensures function runs at most once in a given interval
+    Use cases of throttling:
+        1) Scroll position tracking
+        2) Analytics tracking
+        3) Window re-sizing
+        4) Mouse movement tracking
+    */
     const scrollPositionRef = document.querySelector('#scrollPosition');
+
+    const throttle = (fn, delay) => {
+        let flag = true;
+
+        return (...args) => {
+
+            if (!flag)
+                return;
+
+            flag = false;
+
+            setTimeout(() => {
+                fn(...args);
+                flag = true;
+            }, delay)
+        }
+    }
 
     const updateScrollPosition = () => {
         scrollPositionRef.innerText = window.scrollY;
     }
 
-    document.addEventListener('scroll', updateScrollPosition);
+    const trackMousePosition = () => {
+        console.log("Tracking mouse position");
+    }
+
+    const throttleUpdateScrollPosition = throttle(updateScrollPosition, 2000);
+    const throttleTrackMousePosition = throttle(trackMousePosition, 1000);
+
+    document.addEventListener('scroll', throttleUpdateScrollPosition);
+    document.addEventListener('mousemove', throttleTrackMousePosition);
 </script>
 
 </html>

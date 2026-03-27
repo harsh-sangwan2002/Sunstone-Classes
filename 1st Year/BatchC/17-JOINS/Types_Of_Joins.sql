@@ -13,7 +13,7 @@ On s.batch_id = b.id;
 Select *
 From Students s
 Left Join Batches b
-On s.batch_id = b.id
+On s.batch_id = b.id 
 
 Union
 

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strict Mode</title>
+</head>
+
+<body>
+
+</body>
+
+<script>
+    'use strict'
+    console.log(this); // window
+
+    function fn() {
+        console.log(this); // undefined
+    }
+    fn();
+
+    let obj = {
+        fn: function () {
+            console.log(this); // obj
+
+            function fn2() {
+                console.log(this); // undefined
+            }
+            fn2();
+
+            const arrowFn2 = () => {
+                console.log(this); // obj
+            }
+            arrowFn2();
+        },
+        arrowFn: () => {
+            console.log(this); // window
+
+            function test() {
+                console.log(this); // undefined
+            }
+            test();
+        }
+    }
+    obj.fn();
+    obj.arrowFn();
+</script>
+
+</html>

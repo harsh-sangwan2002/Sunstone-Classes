@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Non Strict Mode</title>
+</head>
+
+<body>
+
+</body>
+
+<script>
+    console.log(this); // window
+
+    function fn() {
+        console.log(this); // window
+    }
+    fn();
+
+    let obj = {
+        fn: function () {
+            console.log(this); // obj
+
+            function fn2() {
+                console.log(this); // window
+
+                var arrowFn2 = () => {
+                    console.log(this); // window
+                }
+                arrowFn2();
+            }
+            fn2();
+
+            var arrowFn2 = () => {
+                console.log(this); // obj
+            }
+            // arrowFn2();
+        },
+        arrowFn: () => {
+            console.log(this); // window
+        }
+    }
+    obj.fn();
+    // obj.arrowFn();
+</script>
+
+</html>

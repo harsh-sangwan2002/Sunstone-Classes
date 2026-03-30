@@ -4,10 +4,12 @@ Write an SQL query to report the city of each person in the Person table. If the
 Return the result table in order of city names.
 */
 Select
-    *
+    city
 From
-    person p
+    Person p
 Left Join
-    address a
+    Address a
 On
-    p.personId = a.personId;
+    p.personId = a.personId
+Order By
+    city;

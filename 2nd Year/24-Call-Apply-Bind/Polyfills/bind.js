@@ -11,7 +11,9 @@ Function.prototype.myBind = function (context, ...args) {
     let fn = this;
 
     return function (...args2) {
-        fn.call(context, ...args, ...args2);
+        context.fn = fn;
+        context.fn(...args, ...args2);
+        delete context.fn;
     }
 }
 

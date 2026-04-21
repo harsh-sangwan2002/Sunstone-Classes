@@ -1,52 +1,44 @@
 use db_name;
 
--- Place the cursor on the statement you want to execute and hit cmd+return
+use testdb;
+
+-- Place the cursor on the query you want to execute and hit cmd+return
 use sakila;
 
 /*
 Select col1, col2, ...
 From table_name
-Where cond1 and/or cond2
+Where cond1 and/or cond2 ...
 */
-Select * From film;
 
--- Print customer_id and store_id from customer table
-Select customer_id, store_id From customer;
+-- Print all the columns from the film table
+Select *
+From film;
 
--- Print title and description from film table
-Select title, description, release_year From film;
+-- Print title, description and release_year from film table
+Select title, description, release_year
+From film;
 
--- Print title of those movies whose rental_duration < 5
+-- Print title, rental_duration of films whose rental_duration < 5
 Select title, rental_duration
 From film
 Where rental_duration < 5;
 
--- Print title & description of those movies whose rental_duration is not equal to 5
-Select title, description
-From film
-Where rental_duration != 5;
-
--- Use as keyword for aliasing
-Select title as movie_title, description movie_description
-From film
-Where rental_duration != 5;
-
-Select * From film;
-
-Select title, 1 from film;
-
-Select title, 2 from film;
-
--- Print those movies whose rating is "PG-13"
-Select *
+-- Print title, rating of films whose rating = "PG-13"
+Select title, rating
 From film
 Where rating = "PG-13";
 
-Select rating
-From film;
+Select rating from film;
 
-Select distinct rating
-From film;
+-- Distinct keyword is used to remove the duplicates
+Select distinct rating From film;
 
-Select distinct rating, rental_duration
+Select 1 from film;
+
+Select "Hello World" from film;
+
+Select * From film;
+
+Select length/60 as duration_in_hours
 From film;

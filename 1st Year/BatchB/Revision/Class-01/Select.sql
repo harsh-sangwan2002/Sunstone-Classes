@@ -4,6 +4,9 @@ use sakila;
 Select col1, col2, ...
 From table_name
 Where cond1 and/or cond2
+Order By col1, col2 ...
+Limit no
+Offset no
 */
 
 -- * means all the columns

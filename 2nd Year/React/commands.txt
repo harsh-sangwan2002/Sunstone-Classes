@@ -1,2 +1,0 @@
-// Command to initialize a react project
-1. npm create vite@latest project-name

@@ -1,6 +1,7 @@
-function Heading() {
+function Heading({ title, color }) {
+
     return (
-        <h1>Todo List</h1>
+        <h1 style={{ color: `${color}` }}>{title}</h1>
     )
 }
 
